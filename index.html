@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jagapriyan Somasundaram | Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: #1a1f3a;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1a1f3a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6b7280;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0ea5e9;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #1a1f3a;
+        }
+
+        .hero-content .headline {
+            font-size: 1.25rem;
+            color: #0ea5e9;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            color: #6b7280;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0ea5e9;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: #0ea5e9;
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-primary:hover {
+            background: #0284c7;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #1a1f3a;
+            border: 2px solid #e5e7eb;
+            padding: 0.65rem 1.65rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            border-color: #0ea5e9;
+            color: #0ea5e9;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: #1a1f3a;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #0ea5e9;
+            display: inline-block;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .about-text p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            max-width: 550px;
+        }
+
+        .about-highlights {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .about-highlights h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1f3a;
+            margin-bottom: 1rem;
+        }
+
+        .highlights-list {
+            list-style: none;
+        }
+
+        .highlights-list li {
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .highlights-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0ea5e9;
+            font-weight: 600;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1f3a;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-company {
+            color: #0ea5e9;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .experience-duration {
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .experience-details {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-details li {
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .experience-details li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0ea5e9;
+            font-weight: 700;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: #0ea5e9;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1f3a;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #e0f2fe;
+            color: #0ea5e9;
+            padding: 0.4rem 0.9rem;
+            border-radius: 0.35rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #f9fafb;
+            padding: 1.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1f3a;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #0ea5e9;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .skill-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        /* Education & Certifications */
+        .education-item,
+        .cert-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .education-item h3,
+        .cert-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1f3a;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-meta,
+        .cert-meta {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details,
+        .cert-details {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f3a;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact a {
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-image img {
+                max-width: 250px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-brand">Jagapriyan</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Full Stack Developer & CS Engineering Student</h1>
+            <p class="headline">Building AI-driven solutions and scalable web applications</p>
+            <p>Third-year Computer Science & Engineering student at Sai Ram Institute of Technology with hands-on experience in web development, cloud computing, and cybersecurity. Passionate about creating practical solutions that solve real-world problems.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">8.1</span>
+                    <span class="stat-label">CGPA</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2+</span>
+                    <span class="stat-label">Projects shipped</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Certifications</span>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <a href="#contact" class="cta-primary">Get in touch</a>
+                <a href="#projects" class="cta-secondary">View projects</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 350 400'%3E%3Crect fill='%23f0f4f8' width='350' height='400'/%3E%3Ctext x='50%25' y='50%25' font-family='system-ui' font-size='18' fill='%236b7280' text-anchor='middle' dominant-baseline='middle'%3EPortrait Photo Here%3C/text%3E%3C/svg%3E" alt="Jagapriyan Somasundaram">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a dedicated full stack developer with a strong foundation in Computer Science. My journey has been marked by hands-on experience in building production-ready applications, from intuitive user interfaces to robust backend systems.</p>
+                <p>At Sai Ram Institute of Technology, I've developed expertise across the modern web stack and cloud technologies. My internship at SkillSync allowed me to work on real-world challenges, translating business requirements into functional, scalable solutions.</p>
+                <p>What drives me is the intersection of technology and practical problem-solving—building tools that make a tangible difference for users and organizations.</p>
+            </div>
+            <div class="about-highlights">
+                <h3>Key strengths</h3>
+                <ul class="highlights-list">
+                    <li>Full stack web development</li>
+                    <li>AI/ML integration</li>
+                    <li>Cloud platforms (AWS)</li>
+                    <li>Database design</li>
+                    <li>Responsive UI design</li>
+                    <li>DevOps fundamentals</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience</h2>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <div class="experience-title">Web Development Intern</div>
+                    <div class="experience-company">SkillSync</div>
+                </div>
+                <div class="experience-duration">Completed</div>
+            </div>
+            <ul class="experience-details">
+                <li>Led hands-on web development focused on practical application architecture</li>
+                <li>Designed and built Daily Planner website for organizing tasks and activities</li>
+                <li>Implemented responsive web design and improved user interface usability</li>
+                <li>Debugged applications and refined complete web solutions for production use</li>
+                <li>Strengthened skills in modern web frameworks and development best practices</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <div class="experience-title">Technical Skills Development</div>
+                    <div class="experience-company">Self-directed & Coursework</div>
+                </div>
+                <div class="experience-duration">Ongoing</div>
+            </div>
+            <ul class="experience-details">
+                <li>Completed multiple industry-recognized certifications (NPTEL, IEEE)</li>
+                <li>Built production projects using Python, JavaScript, and cloud technologies</li>
+                <li>Gained hands-on experience with AWS, DevOps, and containerization</li>
+                <li>Explored AI/ML integration and data analysis workflows</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3 class="project-title">FREIGHTIO</h3>
+                <p class="project-description">AI-powered freight forecasting and vessel chartering optimization system. Combines freight forecasting with advanced algorithms to improve vessel chartering decisions through risk analysis and port constraint optimization.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">FastAPI</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">Daily Planner</h3>
+                <p class="project-description">Comprehensive web application for organizing daily tasks and planning activities. Features clean interface design, responsive behavior, and practical productivity tools for managing daily workflows.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">Web Design</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">Technical Initiatives</h3>
+                <p class="project-description">Ongoing exploration of emerging technologies including cloud platforms, DevOps practices, and AI/ML applications. Building proficiency in production-ready development and system architecture.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">CI/CD</span>
+                    <span class="tech-tag">Cloud Architecture</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Technical skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <ul class="skill-list">
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>SQL</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Web & Frontend</h3>
+                <ul class="skill-list">
+                    <li>HTML, CSS</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Backend & Data</h3>
+                <ul class="skill-list">
+                    <li>Machine Learning</li>
+                    <li>Data Analysis</li>
+                    <li>Pandas, NumPy</li>
+                    <li>Scikit-learn</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Cloud & DevOps</h3>
+                <ul class="skill-list">
+                    <li>AWS</li>
+                    <li>Docker</li>
+                    <li>Cloud Computing</li>
+                    <li>CI/CD Fundamentals</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Security & Networking</h3>
+                <ul class="skill-list">
+                    <li>Cybersecurity Fundamentals</li>
+                    <li>Network Security</li>
+                    <li>Computer Networking</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+                <ul class="skill-list">
+                    <li>Git, GitHub</li>
+                    <li>VS Code</li>
+                    <li>Microsoft Excel</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education">
+        <h2>Education & certifications</h2>
+        
+        <div class="education-item">
+            <h3>B.E. Computer Science & Engineering</h3>
+            <div class="education-meta">Sai Ram Institute of Technology, Tamil Nadu, India</div>
+            <div class="education-details">3rd Year | CGPA: 8.1 | Expected Graduation: 2028</div>
+        </div>
+
+        <div class="cert-item">
+            <h3>NPTEL Certifications</h3>
+            <div class="cert-details">Joy of Python • Data Science • Soft Skills (Elite)</div>
+        </div>
+
+        <div class="cert-item">
+            <h3>IEEE Certifications</h3>
+            <div class="cert-details">Cloud Computing, DevOps, Networking, Cybersecurity, and Japanese</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get in touch</h2>
+        <footer style="background: transparent; margin: 0; padding: 2rem 0; border-top: none;">
+            <div class="footer-content">
+                <div class="footer-contact" style="color: #6b7280;">
+                    <div>
+                        <strong style="color: #1a1f3a;">Email:</strong>
+                        <a href="mailto:sil24cso19@sairamtstu.edu.in">sil24cso19@sairamtstu.edu.in</a>
+                    </div>
+                    <div>
+                        <strong style="color: #1a1f3a;">Phone:</strong>
+                        <a href="tel:+919941247776">+91 9941247776</a>
+                    </div>
+                    <div>
+                        <strong style="color: #1a1f3a;">Location:</strong>
+                        <span>Chennai, Tamil Nadu, India</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Page Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-contact">
+                <a href="mailto:sil24cso19@sairamtstu.edu.in">Email</a>
+                <a href="tel:+919941247776">Phone</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Jagapriyan Somasundaram. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
